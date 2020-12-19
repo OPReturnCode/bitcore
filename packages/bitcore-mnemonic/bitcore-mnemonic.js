@@ -22416,13 +22416,13 @@ Script.prototype.runInContext = function (context) {
     if (!(context instanceof Context)) {
         throw new TypeError("needs a 'context' argument.");
     }
-    
+
     var iframe = document.createElement('iframe');
     if (!iframe.style) iframe.style = {};
     iframe.style.display = 'none';
-    
+
     document.body.appendChild(iframe);
-    
+
     var win = iframe.contentWindow;
     var wEval = win.eval, wExecScript = win.execScript;
 
@@ -22431,7 +22431,7 @@ Script.prototype.runInContext = function (context) {
         wExecScript.call(win, 'null');
         wEval = win.eval;
     }
-    
+
     forEach(Object_keys(context), function (key) {
         win[key] = context[key];
     });
@@ -22440,11 +22440,11 @@ Script.prototype.runInContext = function (context) {
             win[key] = context[key];
         }
     });
-    
+
     var winKeys = Object_keys(win);
 
     var res = wEval.call(win, this.code);
-    
+
     forEach(Object_keys(win), function (key) {
         // Avoid copying circular objects like `top` and `window` by only
         // updating existing context properties or new properties in the `win`
@@ -22459,9 +22459,9 @@ Script.prototype.runInContext = function (context) {
             defineProp(context, key, win[key]);
         }
     });
-    
+
     document.body.removeChild(iframe);
-    
+
     return res;
 };
 
@@ -22525,13 +22525,13 @@ var spec = {
   }]
 };
 
-module.exports = require('bitcore-lib').errors.extend(spec);
+module.exports = require('bitcore-lib-cash').errors.extend(spec);
 
-},{"bitcore-lib":"bitcore-lib"}],157:[function(require,module,exports){
+},{"bitcore-lib-cash":"bitcore-lib-cash"}],157:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
-const bitcore = require('bitcore-lib');
+const bitcore = require('bitcore-lib-cash');
 const BN = bitcore.crypto.BN;
 const unorm = require('unorm');
 const _ = bitcore.deps._;
@@ -22832,7 +22832,7 @@ Mnemonic.bitcore = bitcore;
 module.exports = Mnemonic;
 
 }).call(this,require("buffer").Buffer)
-},{"./errors":156,"./pbkdf2":158,"./words":162,"bitcore-lib":"bitcore-lib","buffer":47,"unorm":167}],158:[function(require,module,exports){
+},{"./errors":156,"./pbkdf2":158,"./words":162,"bitcore-lib-cash":"bitcore-lib-cash","buffer":47,"unorm":167}],158:[function(require,module,exports){
 (function (Buffer){
 'use strict';
 
@@ -23392,7 +23392,7 @@ UChar.udata={
          configurable: true,
          writable: true,
          value: function normalize (/*form*/) {
-            
+
             var str = "" + this;
             var form = arguments[0] === undefined ? "NFC" : arguments[0];
 

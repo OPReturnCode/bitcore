@@ -43,11 +43,11 @@
     "mocha": "^5.2.0"
   },
   "dependencies": {
-    "bitcore-lib": "^8.23.1",
+    "bitcore-lib-cash": "^8.23.1",
     "unorm": "^1.4.1"
   },
   "peerDependencies": {
-    "bitcore-lib": "^8.20.1"
+    "bitcore-lib-cash": "^8.20.1"
   },
   "gitHead": "012cc0216a9bc6b195035855bd17149bad41acd1"
 }
